@@ -1,5 +1,5 @@
 // 引入axios
-import axios from 'axios';
+import axios from 'axios'
 // 设置基准路径
 axios.defaults.baseURL = 'http://localhost:8888/api/private/v1/'
 
@@ -29,10 +29,55 @@ export const userlogin = (data) => {
 }
 // 获取用户列表
 export const getAllList = (params) => {
-
   return axios({
     url: 'users',
     params: params
 
+  })
+}
+// 添加用户
+export const addusers=(data)=>{
+  return axios({
+    url:'users',
+    method: 'post',
+    data:data
+  })
+}
+// 编辑用户
+export const editusers=(data)=>{
+  return axios({
+    url:`users/${data.id}`,
+    method: 'put',
+    data
+  })
+}
+// 删除用户
+export const delusers=(data)=>{
+  return axios({
+    url:`users/${data.id}`,
+    method: 'delete',
+  })
+}
+// 分配角色
+export const allotusers=(data)=>{
+  return axios({
+    url:`users/${data.id}/role`,
+    method:'put',
+    data:data
+  })
+}
+// 获取角色
+export const getroles=()=>{
+  return axios({
+    url:`roles`,
+    method:'get',
+   
+  })
+}
+// 修改用户状态
+export const changusers=(uId,type)=>{
+  return axios({
+    url:`users/${uId}/state/${type}`,
+    method: 'put',
   })
 }
